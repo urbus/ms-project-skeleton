@@ -1,4 +1,3 @@
-# Express Project Skeleton
 <h1 align="center">Welcome to Express Project Skeleton(Hillary Order) 👋</h1>
 
 ## Introduction
