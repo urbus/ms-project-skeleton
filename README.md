@@ -26,38 +26,34 @@ the application will take that request and redirect the <b> / </b>  to <b> /apiG
 >user requests https://localhost:3000/ , the request is handled as below.<br>
 
 <b>app.js</b><br>
+```
 //* path to the route files
 
 var GetRouter = require('./routes/indexGet');
 
-
 //* path to use when user makes a request<
 
-
 app.use('/apiGet',GetRouter);
-
 
 
 //* redirect all / requests to /apiGet
 
 app.get('/', function(req, res) {
-
   res.redirect('/apiGet/');<br>
-
 });
-
+```
 >the request is redirected to use the path <b>/apiGet</b> which calls the <b>file indexGet in the routes folder</b>
 
 <b>indexGet.js</b><br>
 //*calls the getIndex function in the controller file
-
+```
 router.get( '/', controller.getIndex);<br>
-
+```
 >the path calls the <b>getIndex function</b> in the <b>controllers.js file which is in the controller folder</b> this function will not render the index.ejs file which is in the views folder
 
 <b>controller.js</b><br>
 //*get index controller<br>
-
+```
 exports.getIndex = async (req, res) => {
 
     try {<br>
@@ -66,41 +62,42 @@ exports.getIndex = async (req, res) => {
         throw new Error(error.message);<br>
     }<br>
 }
+```
 
 >When talking about business logic, this is where most of the database interaction happens. As you will see in the controller.js file there is a line of code written as <br>
 
 //*call services file
-
+```
 const services  = require('../services/services');
 
 const create  = services;
+```
 
 >This code calls the service file which will contain functions that actualize the business logic. For 
 example, if we were handling login functionality. In the controller.js we could have something like<br>
 
 //*Post user login controller
-
+```
 exports.postLogin = async (req, res, next) => {
-
     try {
        await create.loginuser(req.body);
     } catch(e) {
         throw new Error(e.message);
     }
 }
-
+```
 > This code would call the <b>loginuser</b> function in the service file which would be something like below
 
 //*post login users service
-
+```
 exports.loginuser = async (data) => {
-
     try {
         //* add you sql or mongo db statements here.
     } catch(e) {
         throw new Error(e.message)
     }
 }
+```
 
 ## Install
 
