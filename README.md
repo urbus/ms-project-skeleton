@@ -87,7 +87,7 @@ exports.postLogin = async (req, res, next) => {
 }
 ```
 > This code would call the <b>loginuser</b> function in the service file which would be something like below
-
+<b>services.js</b><br>
 //*post login users service
 ```
 exports.loginuser = async (data) => {
